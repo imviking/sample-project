@@ -11,11 +11,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Routes
-app.use('/', require("./routes/user-routes.js"));
-app.use('/api', require("./routes/user-routes.js"));
-
+const routes = require('./routes/index.js')
+app.use('/', routes);
 app.listen(port, () => {
   console.log('Server is running at http://localhost:' + port);
 

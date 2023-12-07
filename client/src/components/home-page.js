@@ -7,10 +7,34 @@ const homePage ={
     },
     setup(){
      let userList =ref({});
+     let userData = ref({
+        fullName:{}
+     })
+     let popUp = ref({})
      const getUserList = async()=>{
         console.log('hitting api')
-        let response = await api.get('/api/user/userList')
-        console.log(response.data)
+        let response = await api.get('/user/user-list')
+        if(response.status == 200){
+            userList.value = response.data.userList
+        }else{
+            alert('some thing went wrong')
+        }
+     }
+
+     const showPopUp = async(name)=>{
+        console.log('running this',popUp.value.name)
+        popUp.value.name = name
+     }
+     const addUser = async()=>{
+        try {
+            let response = await api.post('/user/save-user',{userData:userData.value})
+            if(response.status == 201){
+                alert('data inserted')
+            } 
+        } catch (error) {
+            console.log(error)
+        }
+        
      }
         onMounted(async()=>{
             await getUserList()
@@ -18,6 +42,11 @@ const homePage ={
 
         return {
             userList,
+            popUp,
+            userData,
+            getUserList,
+            addUser,
+            showPopUp
         }
     },
     template:homePageTemplate
