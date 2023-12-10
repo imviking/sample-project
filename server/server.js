@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log('Server is running at http://localhost:' + port);
 
   // Connecting to MongoDB
-  mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true })
+  mongoose.connect(db_url)
     .then(() => {
       console.log('Connection to database established');
     })
