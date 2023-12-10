@@ -1,5 +1,4 @@
 const {onMounted} = Vue
-import router from './routes/index.js';
 export default {
     name:"App",
     components:{

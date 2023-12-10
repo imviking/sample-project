@@ -1,11 +1,14 @@
 import api from "../services/api.js";
 import homePageTemplate from "./home-page-template.js"
 const {ref,onMounted}=Vue;
+const { useRouter, useRoute } = VueRouter;
 const homePage ={
     components:{
 
     },
     setup(){
+     const route = useRoute()
+     const router = useRouter()
      let userList =ref({});
      let userData = ref({
         fullName:{}

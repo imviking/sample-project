@@ -1,11 +1,9 @@
+import userRoutes from './user-routes.js';
+
 const { createWebHistory, createRouter } =VueRouter
 
 const routes = [
-  {
-    path: '/',
-    name: 'home-page',
-    component: () => import('../components/home-page.js')
-  }
+ ...userRoutes
 ];
 
 const router = createRouter({
