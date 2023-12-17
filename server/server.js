@@ -2,9 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const {PORT, MONGO_URL} = require('./config/config.js')
 
-const db_url = 'mongodb://localhost:27017/mydb';
-const port = 5200;
+const db_url = MONGO_URL;
+const port = PORT;
 const app = express();
 
 // Middleware
